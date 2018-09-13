@@ -1,7 +1,7 @@
 import numpy as np
 import ipywidgets as ipw
 
-from . import tf_runnables_02 as rb
+from pi_commons.tf_tools import tf_runnables as rb
 
 def get_common_broadcasted_shape(batch_shapes):
     ndim = len(batch_shapes[0])

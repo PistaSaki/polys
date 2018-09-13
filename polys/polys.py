@@ -8,15 +8,15 @@ import matplotlib.pyplot as pl
 import numbers
 
 
-from . import ptf
-from .ptf import is_tf_object
-from . import pi_plotting_module_02 as pipl
-from . import nptf_01 as nptf
-from . import pi_tensor_01 as pit
-from .tf_runnables_02 import TF_Runnable
+from pi_commons.tf_tools import ptf
+from pi_commons.tf_tools.ptf import is_tf_object
+from pi_commons.plotting import misc as pipl
+from pi_commons.tf_tools import nptf
+from pi_commons.tf_tools.tf_runnables import TF_Runnable
 
-from . import pi_batches_01 as pib
-from .pi_batches_01 import Batched_Object
+from . import pi_tensor as pit
+from . import pi_batches as pib
+from .pi_batches import Batched_Object
 
 
         
