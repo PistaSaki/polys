@@ -1,6 +1,6 @@
 import numpy as np
 
-from pi_commons.tf_tools import nptf
+from pitf import nptf
 
 
 def right_apply_map_along_batch(X, A, batch_inds, contract_inds, added_inds,):

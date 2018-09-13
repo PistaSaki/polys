@@ -8,11 +8,12 @@ import matplotlib.pyplot as pl
 import numbers
 
 
-from pi_commons.tf_tools import ptf
-from pi_commons.tf_tools.ptf import is_tf_object
-from pi_commons.plotting import misc as pipl
-from pi_commons.tf_tools import nptf
-from pi_commons.tf_tools.tf_runnables import TF_Runnable
+from pitf import ptf
+from pitf.ptf import is_tf_object
+from pitf import nptf
+from pitf.tf_runnables import TF_Runnable
+
+from piplot import misc as pipl
 
 from . import pi_tensor as pit
 from . import pi_batches as pib
