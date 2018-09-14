@@ -298,9 +298,11 @@ def get_spline_from_taylors_1D_OLD(taylor_grid_coeffs, bin_axis, polynom_axis, c
     # in the first step we put into polynom_axis the taylor_polynomials of the two consecutive bins
     start_selector = [slice(None)] * len(taylor_grid.shape)
     start_selector[bin_axis] = slice(None, taylor_grid.shape[bin_axis] - 1)
+    start_selector = tuple(start_selector)
 
     end_selector = [slice(None)] * len(taylor_grid.shape)
     end_selector[bin_axis] = slice(1, None)
+    end_selector = tuple(end_selector)
     
     stacked_taylors = nptf.concat(
         [
@@ -337,9 +339,11 @@ def get_spline_from_taylors_1D(taylor_grid_coeffs, bin_axis, polynom_axis, contr
     # in the first step we put into polynom_axis the taylor_polynomials of the two consecutive bins
     start_selector = [slice(None)] * len(taylor_grid.shape)
     start_selector[bin_axis] = slice(None, taylor_grid.shape[bin_axis] - 1)
+    start_selector = tuple(start_selector)
 
     end_selector = [slice(None)] * len(taylor_grid.shape)
     end_selector[bin_axis] = slice(1, None)
+    end_selector = tuple(end_selector)
     
     stacked_taylors = nptf.concat(
         [
@@ -432,9 +436,11 @@ def get_integral_of_spline_from_taylors_1D(
     # in the first step we put into polynom_axis the taylor_polynomials of the two consecutive bins
     start_selector = [slice(None)] * len(taylor_grid.shape)
     start_selector[bin_axis] = slice(None, taylor_grid.shape[bin_axis] - 1)
+    start_selector = tuple(start_selector)
 
     end_selector = [slice(None)] * len(taylor_grid.shape)
     end_selector[bin_axis] = slice(1, None)
+    end_selector = tuple(end_selector)
     
     stacked_taylors = nptf.concat(
         [
@@ -915,6 +921,7 @@ class Poly(Batched_Object, Val_Indexed_Object, TF_Runnable):
     def truncate_degs(self, limit_degs):
         degs = np.minimum(limit_degs, self.degs)
         selector = [slice(None)]* self.batch_ndim +  [slice(None, int(deg)) for deg in degs]
+        selector = tuple(selector)
         return Poly(
             coef = self.coef[selector], 
             batch_ndim = self.batch_ndim, 
@@ -1177,6 +1184,7 @@ class Poly(Batched_Object, Val_Indexed_Object, TF_Runnable):
         
         selector = [slice(None)] * ndim
         selector[k2] = slice(1, None)
+        selector = tuple(selector)
         
         sh = [1] * ndim
         sh[k2] = deg - 1
