@@ -4,7 +4,7 @@ import keras
 from keras.engine.topology import Layer
 import keras.backend as K
 
-import polys
+from polys import TaylorGrid
 
 
 class CatmullRomLayer(Layer):
@@ -44,7 +44,7 @@ class CatmullRomLayer(Layer):
             trainable=True
         )
         
-        self.tg = polys.TaylorGrid.from_Catmull_Rom(
+        self.tg = TaylorGrid.from_Catmull_Rom(
             coef = self.control_values, 
             params = self.controls,
             batch_ndim = 0,
