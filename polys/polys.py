@@ -1250,8 +1250,13 @@ class PolyMesh(Batched_Object, TF_Runnable):
         self.params = [np.array(cc, dtype = nptf.np_dtype(coef)) for cc in params ]
         self.val_ndim = val_ndim
         
-        assert len(self.coef.shape) == self.batch_ndim + 2 * self.var_ndim + self.val_ndim
-        assert list(self.coef.shape[self.batch_ndim: self.batch_ndim + self.var_ndim]) == list(self.bins_shape)
+        message = (
+            f"coef.shape={self.coef.shape}, batch_ndim={batch_ndim}, "
+            f"var_ndim = {self.var_ndim}, val_ndim = {self.val_ndim}, "
+            f"bins_shape = {self.bins_shape}"
+        )
+        assert len(self.coef.shape) == self.batch_ndim + 2 * self.var_ndim + self.val_ndim, message
+        assert list(self.coef.shape[self.batch_ndim: self.batch_ndim + self.var_ndim]) == list(self.bins_shape), message
     
         
     def __repr__(self):
